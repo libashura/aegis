@@ -1,16 +1,10 @@
 'use client';
 
-interface ScoreBadgeProps {
-  score: number | null;
-  label: string;
-  max?: number;
-}
-
 export default function ScoreBadge({
   score,
   label,
   max = 100,
-}: ScoreBadgeProps) {
+}) {
   if (score === null || score === undefined) {
     return (
       <div className="flex flex-col items-center p-3 bg-gray-800 rounded-lg">

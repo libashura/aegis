@@ -1,10 +1,6 @@
 'use client';
 
-interface TagPillProps {
-  tag: string;
-}
-
-export default function TagPill({ tag }: TagPillProps) {
+export default function TagPill({ tag }) {
   const tagLower = tag.toLowerCase();
   let bgColor = 'bg-gray-700';
   let textColor = 'text-gray-100';

@@ -1,36 +1,20 @@
 'use client';
 
 import { useState } from 'react';
-import api from '@/lib/api';
-import ScoreBadge from '@/components/ScoreBadge';
-import TagPill from '@/components/TagPill';
-import RiskBanner from '@/components/RiskBanner';
+import api from '../../lib/api.js';
+import ScoreBadge from '../../components/ScoreBadge.jsx';
+import TagPill from '../../components/TagPill.jsx';
+import RiskBanner from '../../components/RiskBanner.jsx';
 import { ChevronDown, ChevronUp } from 'lucide-react';
-
-interface LookupResult {
-  ip: string;
-  country: string;
-  asn: string;
-  abuse_score: number;
-  vt_score: number;
-  ipqs_score: number;
-  sources_seen: number;
-  tags: string[];
-  shodan_data: {
-    ports: number[];
-    hostnames: string[];
-    cves: string[];
-  };
-}
 
 export default function Lookup() {
   const [ip, setIp] = useState('');
-  const [result, setResult] = useState<LookupResult | null>(null);
+  const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState(null);
   const [showRawJson, setShowRawJson] = useState(false);
 
-  const handleSearch = async (e: React.FormEvent) => {
+  const handleSearch = async (e) => {
     e.preventDefault();
 
     if (!ip.trim()) {
@@ -45,7 +29,7 @@ export default function Lookup() {
     try {
       const response = await api.get(`/api/lookup/${ip}`);
       setResult(response.data);
-    } catch (err: any) {
+    } catch (err) {
       setError(
         err.response?.data?.detail || 'Failed to lookup IP address'
       );
@@ -54,7 +38,7 @@ export default function Lookup() {
     }
   };
 
-  const countryEmoji = (country: string) => {
+  const countryEmoji = (country) => {
     const countryCode = country?.substring(0, 2).toUpperCase();
     if (!countryCode) return '';
     return String.fromCodePoint(

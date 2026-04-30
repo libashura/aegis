@@ -60,7 +60,7 @@ async def lookup_ip(ip: str, db: AsyncSession) -> Dict[str, Any]:
     
     # Extract country and ASN (prefer VirusTotal)
     country = vt_data.get("country") or ipqs_data.get("country")
-    asn = vt_data.get("asn")
+    asn = str(vt_data.get("asn")) if vt_data.get("asn") else None
     
     # Prepare shodan data (exclude errors)
     shodan_output = {

@@ -1,10 +1,6 @@
 'use client';
 
-interface RiskBannerProps {
-  score: number | null;
-}
-
-export default function RiskBanner({ score }: RiskBannerProps) {
+export default function RiskBanner({ score }) {
   if (score === null || score === undefined) {
     return null;
   }

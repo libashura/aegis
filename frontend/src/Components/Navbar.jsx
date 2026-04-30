@@ -7,7 +7,7 @@ import { Shield, BarChart3, Search, Map } from 'lucide-react';
 export default function Navbar() {
   const pathname = usePathname();
 
-  const isActive = (path: string) => pathname === path;
+  const isActive = (path) => pathname === path;
 
   const navItems = [
     { path: '/', icon: BarChart3, label: 'Dashboard' },
@@ -19,8 +19,8 @@ export default function Navbar() {
     <aside className="fixed left-0 top-0 h-screen w-64 bg-gray-900 border-r border-gray-800 flex flex-col">
       {/* Logo */}
       <div className="p-6 border-b border-gray-800 flex items-center gap-3">
-        <Shield className="w-8 h-8 text-red-500" />
-        <h1 className="text-2xl font-bold text-white">ThreatLens</h1>
+        <Shield className="w-8 h-8 ml-6 text-red-500" />
+        <h1 className="text-2xl font-bold pl-1.5 text-white">Aegis</h1>
       </div>
 
       {/* Navigation */}
